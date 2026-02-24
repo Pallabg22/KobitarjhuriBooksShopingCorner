@@ -65,3 +65,239 @@ textarea {
   resize: none;
   height: 60px;
 }
+
+/* =========================
+   PUJA THEME – FINAL CSS
+   KobitarjhuriBookShopingCorner
+   ========================= */
+
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #fff5f5;
+  color: #3b0a0a;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.title {
+  text-align: center;
+  background: linear-gradient(135deg, #8b0000, #b8860b);
+  color: #fff;
+  padding: 18px 10px;
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+  border-bottom: 4px solid #ffd700;
+}
+
+/* =========================
+   BOOK LIST
+   ========================= */
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: center;
+  padding: 25px 15px;
+}
+
+.book {
+  background: #ffffff;
+  width: 240px;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(139, 0, 0, 0.15);
+  border: 1px solid #f1c40f;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(139, 0, 0, 0.25);
+}
+
+.book img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #f1c40f;
+}
+
+.book h3 {
+  font-size: 16px;
+  margin: 12px 0 6px;
+  color: #8b0000;
+}
+
+.book p {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 6px 0 10px;
+  color: #b8860b;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+button {
+  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  color: #fff;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #a93226, #cb4335);
+}
+
+/* =========================
+   CART SECTION
+   ========================= */
+.cart {
+  max-width: 440px;
+  background: #fffdf7;
+  margin: 25px auto;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(139, 0, 0, 0.2);
+  border: 2px solid #f1c40f;
+}
+
+.cart h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #8b0000;
+  border-bottom: 2px dashed #f1c40f;
+  padding-bottom: 8px;
+}
+
+.cart-item {
+  border-bottom: 1px dashed #e5b100;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+/* Quantity buttons */
+.qty-btn {
+  background: #b8860b;
+  padding: 4px 9px;
+  margin: 0 4px;
+  font-size: 14px;
+}
+
+.qty-btn:hover {
+  background: #9a7209;
+}
+
+/* Remove button */
+.remove {
+  background: #8b0000;
+  margin-top: 6px;
+}
+
+.remove:hover {
+  background: #6e0000;
+}
+
+/* =========================
+   TOTAL
+   ========================= */
+.cart h3 {
+  margin: 16px 0 10px;
+  text-align: center;
+  color: #8b0000;
+}
+
+/* =========================
+   FORM
+   ========================= */
+input,
+textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid #e5b100;
+  font-size: 14px;
+  background: #fffaf0;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #b8860b;
+  box-shadow: 0 0 5px rgba(184, 134, 11, 0.5);
+}
+
+textarea {
+  resize: none;
+  height: 75px;
+}
+
+/* =========================
+   QR SECTION
+   ========================= */
+#upiQR {
+  display: block;
+  margin: 18px auto;
+  border: 3px dashed #b8860b;
+  padding: 6px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* =========================
+   WHATSAPP BUTTON
+   ========================= */
+#orderBtn {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  background: linear-gradient(135deg, #128c7e, #25d366);
+  color: #fff;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+#orderBtn:hover {
+  background: linear-gradient(135deg, #0b6f63, #1ebe5d);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 600px) {
+  .book {
+    width: 92%;
+  }
+
+  .cart {
+    margin: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}

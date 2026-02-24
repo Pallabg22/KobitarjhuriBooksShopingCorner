@@ -32,6 +32,17 @@
 
 </div>
 
+<div class="book">
+    <img src="Usnokolom second edition Book Cover.png" alt="উষ্ণ কলম ">
+    <h3>উষ্ণ কলম দ্বিতীয় সংখ্যা</h3>
+    <p>₹300</p>
+    <button onclick="addToCart('নিউ প্রজন্ম',50)">
+      Add to Cart
+    </button>
+  </div>
+
+</div>
+
 <!-- ===== CART SECTION ===== -->
 <div class="cart">
   <h2>🛒 Cart</h2>
@@ -75,12 +86,33 @@
 
   <p style="font-size:12px;color:gray;text-align:center;">
     যেকোনো UPI App দিয়ে এই QR scan করে পেমেন্ট করুন  
-    <br>
-    পেমেন্টের পর Transaction ID আমাদের WhatsApp-এ পাঠান
+  </p>
+
+  <!-- ===== PAYMENT CONFIRMATION ===== -->
+  <h3>💰 Payment Confirmation</h3>
+
+  <input
+    type="text"
+    id="txnId"
+    placeholder="Transaction ID লিখুন"
+    oninput="updateCart()"
+  >
+
+  <label style="display:block;margin-top:8px;font-size:14px;">
+    <input
+      type="checkbox"
+      id="paymentDone"
+      onchange="updateCart()"
+    >
+    আমি UPI দিয়ে পেমেন্ট করেছি
+  </label>
+
+  <p style="font-size:12px;color:#8b0000;">
+    ⚠️ Transaction ID না দিলে WhatsApp order যাবে না
   </p>
 
   <!-- ===== WHATSAPP ORDER ===== -->
-  <a id="orderBtn" href="#" target="_blank">
+  <a id="orderBtn" href="#">
     WhatsApp এ Order পাঠান
   </a>
 </div>

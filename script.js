@@ -50,7 +50,7 @@ function updateCart() {
     `;
   });
 
-  // 🔹 Total দেখানো
+  // 🔹 Total
   document.getElementById("total").innerText = total;
 
   // 🔹 Customer Details
@@ -58,25 +58,43 @@ function updateCart() {
   let phone = document.getElementById("custPhone").value.trim();
   let address = document.getElementById("custAddress").value.trim();
 
-  // 🔹 Validation
+  // 🔹 Payment Confirmation
+  let txnId = document.getElementById("txnId").value.trim();
+  let paymentDone = document.getElementById("paymentDone").checked;
+
   let orderBtn = document.getElementById("orderBtn");
-  if (!cart.length || !name || !phone || !address) {
+
+  // 🚫 HARD BLOCK: payment ছাড়া order যাবে না
+  if (
+    !cart.length ||
+    !name ||
+    !phone ||
+    !address ||
+    !txnId ||
+    !paymentDone
+  ) {
     orderBtn.href = "#";
+    orderBtn.style.opacity = "0.6";
+    orderBtn.style.pointerEvents = "none";
     return;
   }
 
-  // 🔹 WhatsApp Message
-  let msg = "KobitarjhuriBookShopingCorner থেকে অর্ডার\n\n";
+  // ✅ সব ঠিক থাকলে order enable
+  orderBtn.style.opacity = "1";
+  orderBtn.style.pointerEvents = "auto";
+
+  // 🔹 WhatsApp Message (PAID ORDER)
+  let msg = "KobitarjhuriBookShopingCorner থেকে PAID ORDER\n\n";
 
   cart.forEach(i => {
     msg += `${i.name} × ${i.qty} = ₹${i.price * i.qty}\n`;
   });
 
-  msg += `\nTotal Amount: ₹${total}\n\n`;
+  msg += `\nTotal Paid: ₹${total}\n`;
+  msg += `Transaction ID: ${txnId}\n\n`;
   msg += `Customer Name: ${name}\n`;
   msg += `Phone: ${phone}\n`;
-  msg += `Address: ${address}\n\n`;
-  msg += `UPI Payment Done via QR (Txn ID will be shared)`;
+  msg += `Address: ${address}`;
 
   orderBtn.href =
     "https://wa.me/919679154520?text=" + encodeURIComponent(msg);
