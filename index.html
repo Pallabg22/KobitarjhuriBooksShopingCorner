@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>KobitarjhuriBookShopingCorner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="title">📚 KobitarjhuriBookShopingCorner</h1>
+
+<!-- ===== BOOK LIST ===== -->
+<div class="books">
+
+  <div class="book">
+    <img src="Sharodbarta1432.jpg" alt="শারদ বার্তা ১৪৩২">
+    <h3>শারদ বার্তা ১৪৩২</h3>
+    <p>₹199</p>
+    <button onclick="addToCart('শারদ বার্তা ১৪৩২',199)">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="book">
+    <img src="New prajanmo.JPG" alt="নিউ প্রজন্ম">
+    <h3>নিউ প্রজন্ম</h3>
+    <p>₹50</p>
+    <button onclick="addToCart('নিউ প্রজন্ম',50)">
+      Add to Cart
+    </button>
+  </div>
+
+</div>
+
+<!-- ===== CART SECTION ===== -->
+<div class="cart">
+  <h2>🛒 Cart</h2>
+
+  <div id="cartItems"></div>
+
+  <h3>Total: ₹<span id="total">0</span></h3>
+
+  <!-- ===== CUSTOMER DETAILS ===== -->
+  <h3>📍 Delivery Details</h3>
+
+  <input
+    type="text"
+    id="custName"
+    placeholder="আপনার নাম"
+    oninput="updateCart()"
+  >
+
+  <input
+    type="text"
+    id="custPhone"
+    placeholder="মোবাইল নম্বর"
+    oninput="updateCart()"
+  >
+
+  <textarea
+    id="custAddress"
+    placeholder="সম্পূর্ণ ঠিকানা"
+    oninput="updateCart()"
+  ></textarea>
+
+  <!-- ===== UPI PAYMENT (ONLY QR) ===== -->
+  <h3>💳 Pay via UPI</h3>
+
+  <img
+    id="upiQR"
+    src="paymentQR.jpeg"
+    style="width:200px;margin:10px auto;display:block;"
+    alt="UPI QR Code"
+  >
+
+  <p style="font-size:12px;color:gray;text-align:center;">
+    যেকোনো UPI App দিয়ে এই QR scan করে পেমেন্ট করুন  
+    <br>
+    পেমেন্টের পর Transaction ID আমাদের WhatsApp-এ পাঠান
+  </p>
+
+  <!-- ===== WHATSAPP ORDER ===== -->
+  <a id="orderBtn" href="#" target="_blank">
+    WhatsApp এ Order পাঠান
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

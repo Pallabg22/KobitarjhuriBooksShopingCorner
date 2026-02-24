@@ -1,0 +1,67 @@
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+}
+
+.title {
+  text-align: center;
+}
+
+.books {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.book, .cart {
+  background: white;
+  padding: 15px;
+  width: 230px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.book img {
+  width: 100%;
+}
+
+button, a {
+  margin-top: 8px;
+  padding: 6px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+.qty-btn {
+  padding: 3px 8px;
+  margin: 0 5px;
+}
+
+.remove {
+  background: red;
+  margin-top: 5px;
+}
+
+
+input, textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: Arial;
+}
+
+textarea {
+  resize: none;
+  height: 60px;
+}
