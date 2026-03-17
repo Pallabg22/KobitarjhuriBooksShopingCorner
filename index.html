@@ -30,13 +30,11 @@
     </button>
   </div>
 
-</div>
-
-<div class="book">
-    <img src="Usnokolom second edition Book Cover.png" alt="উষ্ণ কলম ">
+  <div class="book">
+    <img src="Usnokolom second edition Book Cover.png" alt="উষ্ণ কলম দ্বিতীয় সংখ্যা">
     <h3>উষ্ণ কলম দ্বিতীয় সংখ্যা</h3>
     <p>₹300</p>
-    <button onclick="addToCart('নিউ প্রজন্ম',300)">
+    <button onclick="addToCart('উষ্ণ কলম দ্বিতীয় সংখ্যা',300)">
       Add to Cart
     </button>
   </div>
@@ -74,7 +72,16 @@
     oninput="updateCart()"
   ></textarea>
 
-  <!-- ===== UPI PAYMENT (ONLY QR) ===== -->
+  <!-- 🚚 DELIVERY OPTION (NEW) -->
+  <h3>🚚 Delivery Option</h3>
+
+  <select id="deliveryType" onchange="updateCart()">
+    <option value="">Delivery নির্বাচন করুন</option>
+    <option value="local">Local Delivery (₹20)</option>
+    <option value="outside">Outside City (₹50)</option>
+  </select>
+
+  <!-- ===== UPI PAYMENT ===== -->
   <h3>💳 Pay via UPI</h3>
 
   <img
@@ -115,6 +122,15 @@
   <a id="orderBtn" href="#">
     WhatsApp এ Order পাঠান
   </a>
+</div>
+
+<!-- 🎉 SUCCESS POPUP -->
+<div id="successPopup" class="popup">
+  <div class="popup-box">
+    <h2>🎉 Order Placed!</h2>
+    <p>WhatsApp-এ message send করুন</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
