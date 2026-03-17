@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Tracking</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial;
+      background: linear-gradient(135deg, #fff1f1, #ffe9cc);
+      text-align: center;
+      padding: 40px;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      max-width: 420px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #8b0000;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* 🔥 TIMELINE */
+    .timeline {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .step {
+      padding: 8px;
+      border-left: 4px solid #ccc;
+      margin-left: 10px;
+    }
+
+    .active {
+      border-left: 4px solid green;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>📦 Order Tracking</h2>
+
+  <input id="searchInput" placeholder="Order ID অথবা মোবাইল নম্বর দিন">
+
+  <button onclick="checkOrder()">Check Status</button>
+
+  <div id="result" class="result"></div>
+
+  <!-- 🔥 Timeline -->
+  <div id="timeline" class="timeline"></div>
+</div>
+
+<script>
+function checkOrder() {
+  let input = document.getElementById("searchInput").value.trim();
+
+  if (!input) {
+    alert("Order ID অথবা মোবাইল নম্বর দিন");
+    return;
+  }
+
+  document.getElementById("result").innerText = "⏳ Checking...";
+  document.getElementById("timeline").innerHTML = "";
+
+  fetch("https://docs.google.com/spreadsheets/d/1GKx6354DYTyB6BQp6Rkk-uscRkRdQrdRmHZdBQd9LKY/export?format=csv")
+    .then(res => res.text())
+    .then(data => {
+
+      let rows = data.split("\n");
+      let found = false;
+
+      rows.forEach(row => {
+        let cols = row.split(",");
+
+        let orderId = cols[1]?.trim();
+        let phone = cols[3]?.trim();
+        let status = cols[9]?.trim();
+
+        if (input === orderId || input === phone) {
+
+          document.getElementById("result").innerHTML =
+            "📦 Status: " + status + "<br><br>🆔 Order ID: " + orderId;
+
+          showTimeline(status);
+
+          found = true;
+        }
+      });
+
+      if (!found) {
+        document.getElementById("result").innerText =
+          "❌ কোনো order পাওয়া যায়নি";
+      }
+    })
+    .catch(() => {
+      document.getElementById("result").innerText =
+        "⚠️ Error হচ্ছে, পরে আবার চেষ্টা করুন";
+    });
+}
+
+/* 🔥 TIMELINE FUNCTION */
+
+function showTimeline(status) {
+
+  let steps = ["Pending", "Packed", "Shipped", "Out", "Delivered"];
+
+  let html = "";
+
+  steps.forEach(step => {
+    if (steps.indexOf(step) <= steps.indexOf(status)) {
+      html += `<div class="step active">✔ ${step}</div>`;
+    } else {
+      html += `<div class="step">⬜ ${step}</div>`;
+    }
+  });
+
+  document.getElementById("timeline").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
